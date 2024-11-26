@@ -63,17 +63,6 @@ pipeline {
             }
         }
 
-        stage('Debug') {
-    steps {
-        script {
-            sh '''
-            terraform show
-            terraform state list
-            '''
-        }
-    }
-}
-
         stage('Plan') {
             when {
                 expression { params.ACTION == 'apply' }
