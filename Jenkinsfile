@@ -81,7 +81,7 @@ pipeline {
             steps {
                 script {
                     // Generate and display Terraform plan for apply
-                    sh "terraform plan -out=plan-${TF_WORKSPACE}.tfplan"
+                    sh "terraform plan -var-file=environments/${TF_WORKSPACE}.tfvars"
                 }
             }
         }
@@ -93,7 +93,7 @@ pipeline {
             steps {
                 script {
                     // Apply the Terraform plan
-                    sh "terraform apply -input=false plan-${TF_WORKSPACE}.tfplan"
+                    sh "terraform apply -var-file=environments/${TF_WORKSPACE}.tfvars"
                 }
             }
         }
