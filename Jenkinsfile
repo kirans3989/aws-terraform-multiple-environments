@@ -46,13 +46,18 @@ pipeline {
             }
         }
 
-        stage('Setup') {
+       stage('Setup') {
             steps {
                 script {
-                    // Initialize Terraform
+                    // Initialize Terraform and handle workspace selection
                     sh '''
                     terraform init
-                    terraform workspace select ${TF_WORKSPACE} || terraform workspace new ${TF_WORKSPACE}
+            
+                    # Unset TF_WORKSPACE to avoid conflicts during workspace selection
+                    unset TF_WORKSPACE
+            
+                    # Select or create the workspace
+                    terraform workspace select ${ENVIRONMENT} || terraform workspace new ${ENVIRONMENT}
                     '''
                 }
             }
