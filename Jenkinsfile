@@ -93,7 +93,7 @@ pipeline {
             steps {
                 script {
                     // Apply the Terraform plan
-                    sh "terraform apply -auto-approve -var-file=environments/${TF_WORKSPACE}.tfvars"
+                    sh "terraform apply -var-file=environments/${TF_WORKSPACE}.tfvars -auto-approve"
                 }
             }
         }
@@ -105,7 +105,7 @@ pipeline {
             steps {
                 script {
                     // Destroy Terraform-managed infrastructure
-                    sh "terraform destroy -auto-approve"
+                    sh "terraform destroy -var-file=environments/${TF_WORKSPACE}.tfvars -auto-approve"
                 }
             }
         }
