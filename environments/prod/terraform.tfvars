@@ -1,6 +1,0 @@
-vpc_cidr           = "10.10.0.0/16"
-public_subnet_cidr = "10.10.1.0/24"
-availability_zone  = "us-east-1a"
-environment        = "prod"
-ami_id             = "ami-0fc5d935ebf8bc3bc"
-instance_type      = "t2.medium"
