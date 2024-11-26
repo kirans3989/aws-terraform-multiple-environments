@@ -82,6 +82,7 @@ pipeline {
             steps {
                 script {
                     // Apply the Terraform plan
+                    input 'Wait for Approval From Team Leader'
                     sh "terraform apply -var-file=environments/${TF_WORKSPACE}.tfvars -auto-approve"
                 }
             }
@@ -94,6 +95,7 @@ pipeline {
             steps {
                 script {
                     // Destroy Terraform-managed infrastructure
+                    input 'Wait for Approval From Team Leader'
                     sh "terraform destroy -var-file=environments/${TF_WORKSPACE}.tfvars -auto-approve"
                 }
             }
