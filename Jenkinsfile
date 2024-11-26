@@ -93,7 +93,7 @@ pipeline {
             steps {
                 script {
                     // Apply the Terraform plan
-                    sh "terraform apply -var-file=environments/${TF_WORKSPACE}.tfvars"
+                    sh "terraform apply -auto-approve -var-file=environments/${TF_WORKSPACE}.tfvars"
                 }
             }
         }
