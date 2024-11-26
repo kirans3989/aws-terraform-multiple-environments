@@ -37,14 +37,14 @@ pipeline {
             }
         }
 
-        stage('Approval') {
-            steps {
-                script {
+  //      stage('Approval') {
+  //          steps {
+  //              script {
                     // Approval prompt for the selected action
-                    input message: "Approve ${params.ACTION} action for ${params.ENVIRONMENT} environment?"
-                }
-            }
-        }
+  //                  input message: "Approve ${params.ACTION} action for ${params.ENVIRONMENT} environment?"
+  //            }
+  //          }
+  //      }
 
        stage('Setup') {
             steps {
